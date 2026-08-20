@@ -44,6 +44,9 @@ type ClusterParameters struct {
 	// provisioned for the cluster. For information about node types,
 	// go to Working with Clusters (https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes)
 	// in the Amazon Redshift Cluster Management Guide.
+	// Valid examples: dc2.large, dc2.8xlarge, ds2.xlarge, ds2.8xlarge,
+	// ra3.xlplus, ra3.4xlarge, ra3.16xlarge.
+	// +kubebuilder:validation:Pattern=`^[a-z0-9]+\.[a-z0-9]+$`
 	NodeType string `json:"nodeType"`
 
 	// MasterUsername is the user name associated with the master user account for the cluster that
@@ -201,7 +204,7 @@ type ClusterParameters struct {
 	// in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM roles
 	// in a single request.
 	// A cluster can have up to 10 IAM roles associated with it at any time.
-	// kubebuilder:validation:MaxItems=10
+	// +kubebuilder:validation:MaxItems=10
 	// +optional
 	IAMRoles []string `json:"iamRoles,omitempty"`
 

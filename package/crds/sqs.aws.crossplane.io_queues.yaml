@@ -109,7 +109,8 @@ spec:
                       for an existing queue. When you set this attribute, you\n\tmust
                       also provide the MessageGroupId for your messages explicitly.
                       For\n\tmore information, see FIFO Queue Logic (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)\n\tin
-                      the Amazon Simple Queue Service Developer Guide."
+                      the Amazon Simple Queue Service Developer Guide.\nNote: when
+                      set to true the queue name must end with the .fifo suffix."
                     type: boolean
                   kmsDataKeyReusePeriodSeconds:
                     description: |-
@@ -339,8 +340,9 @@ spec:
                     type: string
                   sseEnabled:
                     description: |-
-                      Boolean to enable server-side encryption (SSE) of
-                      message content with SQS-owned encryption keys. See Encryption at rest.
+                      SqsManagedSseEnabled enables server-side encryption (SSE) of
+                      message content with SQS-owned encryption keys. See Encryption at rest
+                      (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html).
                     type: boolean
                   tags:
                     additionalProperties:

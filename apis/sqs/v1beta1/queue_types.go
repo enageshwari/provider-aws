@@ -150,6 +150,7 @@ type QueueParameters struct {
 	//	must also provide the MessageGroupId for your messages explicitly. For
 	//	more information, see FIFO Queue Logic (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
 	//	in the Amazon Simple Queue Service Developer Guide.
+	// Note: when set to true the queue name must end with the .fifo suffix.
 	// +immutable
 	// +optional
 	FIFOQueue *bool `json:"fifoQueue,omitempty"`
@@ -175,8 +176,10 @@ type QueueParameters struct {
 	// +optional
 	ContentBasedDeduplication *bool `json:"contentBasedDeduplication,omitempty"`
 
-	// Boolean to enable server-side encryption (SSE) of
-	// message content with SQS-owned encryption keys. See Encryption at rest.
+	// SqsManagedSseEnabled enables server-side encryption (SSE) of
+	// message content with SQS-owned encryption keys. See Encryption at rest
+	// (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html).
+	// +optional
 	SqsManagedSseEnabled *bool `json:"sseEnabled,omitempty"`
 
 	// Tags add cost allocation tags to the specified Amazon SQS queue.
